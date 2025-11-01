@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio Jérémie Oscar</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      text-align: center;
+      padding: 50px 20px;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+    header h1 {
+      font-size: 3em;
+      color: #ffffff; /* Changed from yellow to white */
+      margin: 0;
+    }
+    header p {
+      font-size: 1.2em;
+      margin: 10px 0 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+    .section {
+      margin: 50px 0;
+      text-align: center;
+    }
+    .section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #ffffff; /* Changed from yellow to white */
+    }
+    .section p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 30px;
+    }
+    .videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .video-card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+    .video-card:hover {
+      transform: scale(1.05);
+    }
+    iframe {
+      width: 100%;
+      height: 200px;
+      border: none;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #fff;
+      margin-top: 50px;
+    }
+    button {
+      padding: 15px 30px;
+      font-size: 1.2em;
+      background-color: #e74c3c;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #c0392b;
+    }
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2em;
+      }
+      .section h2 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <img src="moi.jpg" alt="Photo de Jérémie Oscar" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin-bottom: 20px;">
+    <h1>Jérémie Oscar</h1>
+    <p>Chrétien, Beatmaker et Informaticien Congolais</p>
+  </header>
+  <div class="container">
+    <section class="section">
+      <h2>Bienvenue</h2>
+      <p>Bienvenue sur mon site où vous pouvez écouter mes productions musicales urbaines et en apprendre davantage sur moi et ma musique.</p>
+    </section>
+    <section class="section">
+      <h2>Mes Productions</h2>
+      <div class="videos">
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/bw_OYgzaji4" title="Afrobeat"></iframe>
+          <p>🎵 Afrobeat</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/sQil8CLFKIc" title="R&B"></iframe>
+          <p>🎵 R&B</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/-ZmBqb2SofM" title="Trap"></iframe>
+          <p>🎵 Trap</p>
+        </div>
+        <div class="video-card">
+          <iframe src="https://www.youtube.com/embed/ud1YnFRuZOw" title="Rumba Urbaine"></iframe>
+          <p>🎵 Rumba Urbaine</p>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <h2>Contact</h2>
+      <p>Retrouvez-moi sur :</p>
+      <p>
+        <a href="https://www.youtube.com/@J%C3%A9r%C3%A9mieOscar-j7k" target="_blank" rel="noopener">YouTube</a> |
+        <a href="https://www.facebook.com/jeremie.oscar.52" target="_blank" rel="noopener">Facebook</a> |
+        <a href="https://www.instagram.com/jeremie_oscar?igsh=MXN1YTRoaXJvcjEycQ==" target="_blank" rel="noopener">Instagram</a>
+      </p>
+    </section>
+    <section class="section">
+      <p>Besoin d'informations ou d'aide ? Parlez à mon assistant virtuel !</p>
+      <button onclick="window.open('chatbot.html', '_blank')">💬 Parler à mon assistant</button>
+    </section>
+  </div>
+  <footer>
+    <p>© 2025 Jérémie Oscar. Tous droits réservés.</p>
+  </footer>
+</body>
+</html>
