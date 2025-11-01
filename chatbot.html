@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jérémie Oscar bot💬</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #fff;
+    }
+
+    .chat-container {
+      background-color: rgba(0, 0, 0, 0.8);
+      width: 100%;
+      max-width: 400px;
+      height: 90vh;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+    }
+
+    .chat-header {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      padding: 16px;
+      color: #fff;
+      text-align: center;
+      font-weight: bold;
+      border-bottom: 1px solid #333;
+    }
+
+    .chat-body {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .message {
+      max-width: 80%;
+      padding: 10px 14px;
+      border-radius: 18px;
+      font-size: 15px;
+      line-height: 1.4;
+      display: inline-block;
+      word-wrap: break-word;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    .bot {
+      align-self: flex-start;
+      background-color: #3a3a3a;
+      color: #fff;
+      border-bottom-left-radius: 0;
+    }
+
+    .user {
+      align-self: flex-end;
+      background-color: #007bff;
+      color: #fff;
+      border-bottom-right-radius: 0;
+    }
+
+    .chat-footer {
+      display: flex;
+      border-top: 1px solid #333;
+      padding: 10px;
+      background: rgba(0, 0, 0, 0.9);
+    }
+
+    .chat-footer input {
+      flex: 1;
+      padding: 10px;
+      border-radius: 20px;
+      border: none;
+      background-color: #2a2a2a;
+      color: white;
+      outline: none;
+      font-size: 14px;
+    }
+
+    .chat-footer button {
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      border: none;
+      color: #fff;
+      font-weight: bold;
+      margin-left: 10px;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .chat-footer button:hover {
+      background: linear-gradient(135deg, #2575fc, #6a11cb);
+    }
+
+    .suggestions {
+      padding: 8px;
+      background: rgba(0, 0, 0, 0.9);
+      border-top: 1px solid #333;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
+
+    .suggestions button {
+      background: linear-gradient(135deg, #333, #444);
+      color: #ccc;
+      padding: 6px 12px;
+      border: none;
+      border-radius: 16px;
+      cursor: pointer;
+      font-size: 13px;
+      transition: transform 0.3s ease;
+    }
+
+    .suggestions button:hover {
+      transform: scale(1.1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="chat-container">
+  <div class="chat-header">Oscar Bot💬</div>
+  <div class="chat-body" id="chat">
+    <div class="message bot">Salut ! Je suis là juste pour te donner des infos basiques sur Jérémie Oscar🔥. Si tu veux plus de précisions, tu peux directement chater avec lui ou son assistant personnalisé en cliquant sur le widget bleu qui s'affiche en bas et à droite de ton écran.</div>
+  </div>
+
+  <div class="suggestions">
+    <button onclick="sendSuggestion('Qui est Jérémie Oscar ?')">Qui est Jérémie Oscar ?</button>
+    <button onclick="sendSuggestion('Où écouter ta musique ?')">Où écouter ta musique ?</button>
+    <button onclick="sendSuggestion('Quels styles tu fais ?')">Styles musicaux ?</button>
+    <button onclick="sendSuggestion('Comment te contacter ?')">Contact ?</button>
+    <button onclick="sendSuggestion('Je veux une collaboration !')">Je veux une collaboration !</button>
+  </div>
+
+  <div class="chat-footer">
+    <input type="text" id="userInput" placeholder="Que voulez-vous savoir de Jérémie..."/>
+    <button onclick="handleSend()">Envoyer</button>
+  </div>
+</div>
+
+<script>
+  const chat = document.getElementById("chat");
+  const input = document.getElementById("userInput");
+
+  function addMessage(sender, text) {
+    const msg = document.createElement("div");
+    msg.className = `message ${sender}`;
+    msg.innerText = text;
+    chat.appendChild(msg);
+    chat.scrollTop = chat.scrollHeight;
+  }
+
+  function handleSend() {
+    const text = input.value.trim();
+    if (!text) return;
+    addMessage("user", text);
+    respond(text.toLowerCase());
+    input.value = "";
+  }
+
+  function sendSuggestion(text) {
+    input.value = text;
+    handleSend();
+  }
+
+  function respond(message) {
+    let response = "Je n’ai pas compris 🤔 Essaie une autre question ou discute directement avec son assistant plus personnalisé (Clique sur 💬 le widget bleu en haut à gauche de ton écran).";
+
+    if (message.includes("qui")) {
+      response = "Jérémie Oscar ou OscarSoundz (son nom d'artiste) est un artiste musicien, beatmaker et informaticien passionné 💻🎶.";
+    } else if (message.includes("écouter") || message.includes("musique") || message.includes("beats") || message.includes("instrumental")) {
+      response = "Retrouve mes sons sur YouTube, et sur mon site (vous y êtes déjà 😊)🎧. Pour les autres informations, tu peux me contacter personnellement.";
+    } else if (message.includes("style") || message.includes("genre")) {
+      response = "Je fais du hip-hop, R&B, afrobeat, afro rumba et des prods inspirées ✨.";
+    } else if (message.includes("contact")) {
+      response = "Contacte-moi via Instagram ou Facebook 📩. Les liens sont sur la page principale.";
+    } else if (message.includes("collaboration") || message.includes("prod")) {
+      response = "Si tu veux travailler avec Jérémie ou juste avoir une prod personnalisée, laisse-lui un message sur son chatbot personnalisé (clique juste sur le widget 💬 bleu qui est en haut à gauche de ton écran).";
+    }
+
+    setTimeout(() => addMessage("bot", response), 500);
+  }
+</script>
+<script src="//code.tidio.co/r9nknm3taxwbbi2py283bj7tuwn1tbxt.js" async></script>
+
+</body>
+</html>
