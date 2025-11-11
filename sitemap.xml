@@ -3,14 +3,14 @@ xml
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemaps/0.9">
 
  <url>
-  <loc>http://jeremieoscar.com/</loc>
+  <loc>https://jeremieoscar.com/</loc>
   <lastmod>2025-11-06</lastmod>
   <changefreq>monthly</changefreq>
   <priority>1.0</priority>
  </url>
 
  <url>
-  <loc>http://jeremieoscar.com/projects.html</loc>
+  <loc>https://jeremieoscar.com/projects.html</loc>
   <lastmod>2025-11-06</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
